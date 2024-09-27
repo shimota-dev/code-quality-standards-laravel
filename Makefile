@@ -1,6 +1,6 @@
-.PHONY: all
+.PHONY: all Pint Larastan git husky commitlint
 # Laravel PintとLarastanによるformatterとlinterの初期設定
-all: Pint Larastan husky commitlint
+all: Pint Larastan git husky commitlint
 
 Pint: # no set up
 
@@ -10,9 +10,13 @@ Larastan:
 # phpstan.neonは以下の公式GitHubを参照
 # https://github.com/larastan/larastan
 
+git:
+	git init
+
 husky:
 	npm install --save-dev husky
 	npx husky init
+# .husky/pre-commitに実行したいformatter,linterのコマンドを書く。
 
 commitlint:
 	npm install --save-dev @commitlint/{cli,config-conventional}
